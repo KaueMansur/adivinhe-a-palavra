@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Passion+One:wght@400;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: rgb(72, 72, 185);
+    font-family: "Passion one", sans-serif;
+}
+
+.none{
+    display: none;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#container_infos{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+
+#pontos_container{
+    display: flex;
+    align-items: center;
+}
+
+#titulo{
+    color: rgb(250, 225, 4);
+    font-size: 5em;
+    transform: translateY(-30px);
+}
+
+h3,p{
+    color: rgb(101, 209, 38);
+    font-size: 3em;
+    transform: translateY(-50px);
+}
+
+#letras{
+    transform: translateY(-40px);
+    background-color: rgb(78, 103, 212);
+    height: 400px;
+    width: 90%;
+    border-radius: 20px;
+    list-style: none;
+    color: rgb(250, 225, 4);
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+}
+
+#resposta{
+    position: relative;
+    top: -20px;
+    font-size: 2em;
+    padding: 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    background-color: rgb(172, 172, 238);
+    font-family: "Passion one";
+    color: rgb(0, 0, 179);
+    letter-spacing: 5px;
+    width: 600px;
+}
+
+#jogar{
+    padding: 10px;
+    width: 300px;
+    height: 70px;
+    border-radius: 20px;
+    color: rgb(27, 185, 48);
+    background-color: rgb(255, 208, 0);
+    font-family: "Passion one";
+    letter-spacing: 2px;
+    font-size: 3em;
+    cursor: pointer;
+}
+
+#validar{
+    padding: 10px;
+    width: 400px;
+    height: 70px;
+    border-radius: 20px;
+    color: rgb(179, 255, 0);
+    background-color: rgb(255, 115, 0);
+    font-family: "Passion one";
+    letter-spacing: 2px;
+    font-size: 2.5em;
+    cursor: pointer;
+    display: none;
+}
