@@ -84,7 +84,7 @@ function validarResposta(){
         points++
         pontos.innerHTML = points
     } else{
-        alert('Errou!❌')
+        alert(`Errou!❌\n A palavra era: ${palavra}`)
         points--
         pontos.innerHTML = points
     }
