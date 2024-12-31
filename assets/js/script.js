@@ -31,10 +31,8 @@ function sortearPalavra(){
     if(categoria == categorias[0]){
         categoriaDica.innerHTML += " Nome"
     } else if(categoria == categorias[1]){
-        categoriaDica.innerHTML += " Jogador de futebol"
-    } else if(categoria == categorias[2]){
         categoriaDica.innerHTML += " Comida"
-    } else if(categoria == categorias[3]){
+    } else if(categoria == categorias[2]){
         categoriaDica.innerHTML += " Animal"
     } else{
         categoriaDica.innerHTML += " Bebida"
