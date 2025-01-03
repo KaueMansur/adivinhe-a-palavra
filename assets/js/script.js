@@ -5,6 +5,8 @@ const resposta = document.getElementById("resposta")
 const pontos = document.getElementById("pontos")
 const jogar = document.getElementById("jogar")
 const categoriaDica = document.getElementById("categoria")
+const somAcerto = document.getElementById("som_acerto")
+const somErro = document.getElementById("som_erro")
 
 const categorias = [nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda", "Gabriel", "Helena", "Igor", "Juliana", "Kleber", "Larissa", "Marcos", "Natália", "Otávio", "Patrícia", "Quintino", "Rafaela", "Sérgio", "Tatiana", "Ursula", "Vitor", "Wesley", "Xênia", "Yara", "Zeca", "Alice", "Bernardo", "Camila", "Diego", "Elisa", "Felipe", "Giovana", "Henrique", "Isabela", "João", "Karen", "Leonardo", "Marta", "Nicolas", "Olívia", "Pedro", "Quésia", "Renato", "Sofia", "Thiago", "Úrsula", "Vinícius", "Wagner", "Xavier", "Kauê", "Bruno", "Luiz"],
 // jogadoresDeFutebol = ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Kevin De Bruyne", "Robert Lewandowski", "Mohamed Salah", "Virgil van Dijk", "Sadio Mané", "Harry Kane", "Sergio Ramos", "Luka Modrić", "Eden Hazard", "Raheem Sterling", "Antoine Griezmann", "Paul Pogba", "Toni Kroos", "Karim Benzema", "Luis Suárez", "Gerard Piqué", "Manuel Neuer", "Jan Oblak", "Alisson Becker", "Ederson Moraes", "Marc-André ter Stegen", "Romelu Lukaku", "Thomas Müller", "Joshua Kimmich", "Trent Alexander-Arnold", "Andrew Robertson", "Jadon Sancho", "Erling Haaland", "Bruno Fernandes", "João Félix", "Thiago Silva", "N'Golo Kanté", "Pierre-Emerick Aubameyang", "Zlatan Ibrahimović", "Sergio Agüero", "Philippe Coutinho", "Marco Verratti", "Ciro Immobile", "Kalidou Koulibaly", "Leonardo Bonucci", "Giorgio Chiellini", "Frenkie de Jong", "Matthijs de Ligt", "Hakim Ziyech", "Christian Pulisic", "Kai Havertz"],
@@ -15,7 +17,7 @@ const categorias = [nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fe
 
 let points = 0
 
-let palavra;
+let palavra = 0;
 
 let letras = []
 
@@ -78,17 +80,27 @@ function jogarLetrasNaTela(){
 
 function validarResposta(){
     if(resposta.value == palavra) {
-        alert('Acertou!✅')
+        listaDeLetras.style.backgroundColor = "#00FF00"
+        somAcerto.play()
+        setTimeout(()=>{
+            listaDeLetras.style.backgroundColor = "rgb(78, 103, 212)"
+        }, 800)
         points++
-        pontos.innerHTML = points
+        pontos.innerHTML = " " + points
     } else{
-        alert(`Errou!❌\n A palavra era: ${palavra}`)
+        // alert(`Errou!❌\n A palavra era: ${palavra}`)
+        listaDeLetras.style.backgroundColor = "#FF0000"
+        somErro.play()
+        setTimeout(()=>{
+            listaDeLetras.style.backgroundColor = "rgb(78, 103, 212)"
+        }, 800)
         points--
-        pontos.innerHTML = points
+        pontos.innerHTML = " " + points
     }
     for(i = 0; i < letras.length; i++) {
         document.getElementById(`letra${i}`).remove();
     }
+    resposta.focus()
     letras = []
     categoria.innerHTML = "Categoria:"
     jogarLetrasNaTela()
@@ -103,4 +115,13 @@ jogar.addEventListener("click", ()=>{
     jogarLetrasNaTela()
     jogar.style.display = "none"
     validarNome.style.display = "block"
+    resposta.style.display = "block"
+    resposta.focus()
 })
+
+document.addEventListener('keydown', (event) => {
+    if(event.key == "Enter" && palavra != 0){
+        validarResposta()
+        resposta.value = "";
+    }
+});
