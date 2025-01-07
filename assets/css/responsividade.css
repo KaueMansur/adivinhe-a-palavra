@@ -1,0 +1,50 @@
+@media (max-width: 700px) {
+    #titulo{
+        font-size: 4em;
+    }
+}
+
+@media (max-width: 1040px){
+    .letra{
+        font-size: 2em;
+        width: 40px;
+    }
+
+    #letras{
+        gap: 8px;
+    }
+
+    h3, p{
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px){
+    #titulo{
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 440px){
+    h3,p{
+        font-size: 1.5em;
+    }
+
+    #resposta{
+        min-width: 300px;
+    }
+
+    #validar, #jogar{
+        width: 300px;
+    }
+}
+
+@media (max-width: 360px){
+    #titulo{
+        font-size: 2.5em;
+    }
+
+    .letra{
+        font-size: 1.7em;
+    }
+}
