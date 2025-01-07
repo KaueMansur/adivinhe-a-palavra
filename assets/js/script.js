@@ -74,8 +74,6 @@ function jogarLetrasNaTela(){
     })
 }
 
-
-
 function validarResposta(){
     if(resposta.value == palavra) {
         listaDeLetras.style.backgroundColor = "#00FF00"
