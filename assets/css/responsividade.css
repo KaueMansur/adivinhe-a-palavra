@@ -53,13 +53,3 @@
         font-size: 1.7em;
     }
 }
-
-@media (orientation: landscape) and (max-heigh: 500px){
-    body{
-        gap: 5px;
-    };
-
-    #letras{
-        height: 150px;
-    }
-}

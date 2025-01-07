@@ -50,8 +50,6 @@ function separarLetras(){
     for(i = 0; i < palavra.length; i++){
         letras.push(palavra.substring(i, (i + 1)))
     }
-
-    console.log(palavra)
 }
 
 function embaralharLetras(){
@@ -75,7 +73,7 @@ function jogarLetrasNaTela(){
 }
 
 function validarResposta(){
-    if(resposta.value == palavra) {
+    if(resposta.value.toLowerCase() == palavra) {
         listaDeLetras.style.backgroundColor = "#00FF00"
         document.body.style.setProperty("--cor-fundo-letras", "#49dd49")
         somAcerto.play()
