@@ -7,6 +7,7 @@ const jogar = document.getElementById("jogar")
 const categoriaDica = document.getElementById("categoria")
 const somAcerto = document.getElementById("som_acerto")
 const somErro = document.getElementById("som_erro")
+const mensagemDeErro = document.getElementById("popup_erro")
 
 const categorias = [nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda", "Gabriel", "Helena", "Igor", "Juliana", "Kleber", "Larissa", "Marcos", "Natália", "Otávio", "Patrícia", "Quintino", "Rafaela", "Sérgio", "Tatiana", "Ursula", "Vitor", "Wesley", "Xênia", "Yara", "Zeca", "Alice", "Bernardo", "Camila", "Diego", "Elisa", "Felipe", "Giovana", "Henrique", "Isabela", "João", "Karen", "Leonardo", "Marta", "Nicolas", "Olívia", "Pedro", "Quésia", "Renato", "Sofia", "Thiago", "Úrsula", "Vinícius", "Wagner", "Xavier", "Kauê", "Bruno", "Luiz"],
 // jogadoresDeFutebol = ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Kevin De Bruyne", "Robert Lewandowski", "Mohamed Salah", "Virgil van Dijk", "Sadio Mané", "Harry Kane", "Sergio Ramos", "Luka Modrić", "Eden Hazard", "Raheem Sterling", "Antoine Griezmann", "Paul Pogba", "Toni Kroos", "Karim Benzema", "Luis Suárez", "Gerard Piqué", "Manuel Neuer", "Jan Oblak", "Alisson Becker", "Ederson Moraes", "Marc-André ter Stegen", "Romelu Lukaku", "Thomas Müller", "Joshua Kimmich", "Trent Alexander-Arnold", "Andrew Robertson", "Jadon Sancho", "Erling Haaland", "Bruno Fernandes", "João Félix", "Thiago Silva", "N'Golo Kanté", "Pierre-Emerick Aubameyang", "Zlatan Ibrahimović", "Sergio Agüero", "Philippe Coutinho", "Marco Verratti", "Ciro Immobile", "Kalidou Koulibaly", "Leonardo Bonucci", "Giorgio Chiellini", "Frenkie de Jong", "Matthijs de Ligt", "Hakim Ziyech", "Christian Pulisic", "Kai Havertz"],
@@ -40,14 +41,11 @@ function sortearPalavra(){
         categoriaDica.innerHTML += " Bebida"
     }
 
-    console.log(categoria)
-
-
     return palavra = sortearElemento(categoria)
 }
 
 function separarLetras(){
-    palavra = sortearPalavra()
+    palavra = sortearPalavra().toLowerCase()
 
     for(i = 0; i < palavra.length; i++){
         letras.push(palavra.substring(i, (i + 1)))
@@ -81,19 +79,25 @@ function jogarLetrasNaTela(){
 function validarResposta(){
     if(resposta.value == palavra) {
         listaDeLetras.style.backgroundColor = "#00FF00"
+        document.body.style.setProperty("--cor-fundo-letras", "#49dd49")
         somAcerto.play()
         setTimeout(()=>{
+            document.body.style.setProperty("--cor-fundo-letras", "rgb(148, 148, 185)")
             listaDeLetras.style.backgroundColor = "rgb(78, 103, 212)"
         }, 800)
         points++
         pontos.innerHTML = " " + points
     } else{
-        // alert(`Errou!❌\n A palavra era: ${palavra}`)
         listaDeLetras.style.backgroundColor = "#FF0000"
+        mensagemDeErro.innerHTML = palavra
+        mensagemDeErro.style.display = "flex"
+        document.body.style.setProperty("--cor-fundo-letras", "rgb(173, 19, 19)")
         somErro.play()
         setTimeout(()=>{
+            mensagemDeErro.style.display = "none"
+            document.body.style.setProperty("--cor-fundo-letras", "rgb(148, 148, 185)")
             listaDeLetras.style.backgroundColor = "rgb(78, 103, 212)"
-        }, 800)
+        }, 1000)
         points--
         pontos.innerHTML = " " + points
     }
