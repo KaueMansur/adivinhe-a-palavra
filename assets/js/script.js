@@ -8,6 +8,8 @@ const categoriaDica = document.getElementById("categoria")
 const somAcerto = document.getElementById("som_acerto")
 const somErro = document.getElementById("som_erro")
 const mensagemDeErro = document.getElementById("popup_erro")
+const btnTrocarPalavra = document.getElementById("btn_alterar_palavra")
+const trocasDisponiveis = document.getElementById("trocas_disponiveis")
 
 const categorias = [nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda", "Gabriel", "Helena", "Igor", "Juliana", "Kleber", "Larissa", "Marcos", "Natália", "Otávio", "Patrícia", "Quintino", "Rafaela", "Sérgio", "Tatiana", "Ursula", "Vitor", "Wesley", "Xênia", "Yara", "Zeca", "Alice", "Bernardo", "Camila", "Diego", "Elisa", "Felipe", "Giovana", "Henrique", "Isabela", "João", "Karen", "Leonardo", "Marta", "Nicolas", "Olívia", "Pedro", "Quésia", "Renato", "Sofia", "Thiago", "Úrsula", "Vinícius", "Wagner", "Xavier", "Kauê", "Bruno", "Luiz"],
 // jogadoresDeFutebol = ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Kevin De Bruyne", "Robert Lewandowski", "Mohamed Salah", "Virgil van Dijk", "Sadio Mané", "Harry Kane", "Sergio Ramos", "Luka Modrić", "Eden Hazard", "Raheem Sterling", "Antoine Griezmann", "Paul Pogba", "Toni Kroos", "Karim Benzema", "Luis Suárez", "Gerard Piqué", "Manuel Neuer", "Jan Oblak", "Alisson Becker", "Ederson Moraes", "Marc-André ter Stegen", "Romelu Lukaku", "Thomas Müller", "Joshua Kimmich", "Trent Alexander-Arnold", "Andrew Robertson", "Jadon Sancho", "Erling Haaland", "Bruno Fernandes", "João Félix", "Thiago Silva", "N'Golo Kanté", "Pierre-Emerick Aubameyang", "Zlatan Ibrahimović", "Sergio Agüero", "Philippe Coutinho", "Marco Verratti", "Ciro Immobile", "Kalidou Koulibaly", "Leonardo Bonucci", "Giorgio Chiellini", "Frenkie de Jong", "Matthijs de Ligt", "Hakim Ziyech", "Christian Pulisic", "Kai Havertz"],
@@ -16,14 +18,16 @@ const categorias = [nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fe
         bebidas = ["Água", "Café", "Chá", "Suco de Laranja", "Suco de Maçã", "Refrigerante", "Cerveja", "Vinho", "Whisky", "Vodka","Rum", "Tequila", "Gin", "Licor", "Smoothie", "Milkshake", "Achocolatado", "Água de Coco", "Energético", "Isotônico","Limonada", "Suco de Uva", "Suco de Abacaxi", "Suco de Manga", "Suco de Maracujá", "Suco de Morango", "Suco de Melancia", "Suco de Acerola", "Suco de Goiaba", "Suco de Pêssego","Chá Verde", "Chá Preto", "Chá de Camomila", "Chá de Hortelã", "Chá de Erva-Doce", "Chá Mate", "Chá de Hibisco", "Chá de Gengibre", "Chá de Limão", "Chá de Frutas Vermelhas", "Cappuccino", "Latte", "Mocha", "Espresso", "Macchiato", "Frappuccino", "Café Gelado", "Café com Leite", "Café Americano", "Café Turco"]
     ]
 
+let trocasDePalavras = 5
+
 let points = 0
 
-let palavra = 0;
+let palavra = 0
 
 let letras = []
 
 function sortearElemento(lista){
-    let sorteio = Math.round(Math.random() * (lista.length - 1)) 
+    let sorteio = Math.round(Math.random() * (lista.length - 1))
     let elementoSorteado = lista[sorteio]
     return elementoSorteado
 }
@@ -125,3 +129,18 @@ document.addEventListener('keydown', (event) => {
         resposta.value = "";
     }
 });
+
+btnTrocarPalavra.addEventListener("click", ()=>{
+    if(trocasDePalavras > 0){
+        trocasDePalavras--
+        trocasDisponiveis.innerHTML = trocasDePalavras
+
+        for(i = 0; i < letras.length; i++) {
+            document.getElementById(`letra${i}`).remove();
+        }
+        resposta.focus()
+        letras = []
+        categoria.innerHTML = "Categoria:"
+        jogarLetrasNaTela()
+    }
+})
