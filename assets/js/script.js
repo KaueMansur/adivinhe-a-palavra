@@ -10,6 +10,7 @@ const somErro = document.getElementById("som_erro")
 const mensagemDeErro = document.getElementById("popup_erro")
 const btnTrocarPalavra = document.getElementById("btn_alterar_palavra")
 const trocasDisponiveis = document.getElementById("trocas_disponiveis")
+const contagemDeTrocas = document.getElementById("trocas_disponiveis")
 
 const categorias = [nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda", "Gabriel", "Helena", "Igor", "Juliana", "Kleber", "Larissa", "Marcos", "Natália", "Otávio", "Patrícia", "Quintino", "Rafaela", "Sérgio", "Tatiana", "Ursula", "Vitor", "Wesley", "Xênia", "Yara", "Zeca", "Alice", "Bernardo", "Camila", "Diego", "Elisa", "Felipe", "Giovana", "Henrique", "Isabela", "João", "Karen", "Leonardo", "Marta", "Nicolas", "Olívia", "Pedro", "Quésia", "Renato", "Sofia", "Thiago", "Úrsula", "Vinícius", "Wagner", "Xavier", "Kauê", "Bruno", "Luiz"],
 // jogadoresDeFutebol = ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Kevin De Bruyne", "Robert Lewandowski", "Mohamed Salah", "Virgil van Dijk", "Sadio Mané", "Harry Kane", "Sergio Ramos", "Luka Modrić", "Eden Hazard", "Raheem Sterling", "Antoine Griezmann", "Paul Pogba", "Toni Kroos", "Karim Benzema", "Luis Suárez", "Gerard Piqué", "Manuel Neuer", "Jan Oblak", "Alisson Becker", "Ederson Moraes", "Marc-André ter Stegen", "Romelu Lukaku", "Thomas Müller", "Joshua Kimmich", "Trent Alexander-Arnold", "Andrew Robertson", "Jadon Sancho", "Erling Haaland", "Bruno Fernandes", "João Félix", "Thiago Silva", "N'Golo Kanté", "Pierre-Emerick Aubameyang", "Zlatan Ibrahimović", "Sergio Agüero", "Philippe Coutinho", "Marco Verratti", "Ciro Immobile", "Kalidou Koulibaly", "Leonardo Bonucci", "Giorgio Chiellini", "Frenkie de Jong", "Matthijs de Ligt", "Hakim Ziyech", "Christian Pulisic", "Kai Havertz"],
@@ -120,6 +121,9 @@ jogar.addEventListener("click", ()=>{
     jogar.style.display = "none"
     validarNome.style.display = "block"
     resposta.style.display = "block"
+    contagemDeTrocas.style.display = "block"
+    btnTrocarPalavra.style.display = "block"
+
     resposta.focus()
 })
 

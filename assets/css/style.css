@@ -143,6 +143,11 @@ h3,p{
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
+    display: none;
+}
+
+#trocas_disponiveis{
+    display: none;
 }
 
 #container_trocar_palavra{
